@@ -1,4 +1,4 @@
-public interface CharacterState {
+public interface Character {
     void train();
     void meditate();
     void fight();

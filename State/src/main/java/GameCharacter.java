@@ -2,15 +2,15 @@ public class GameCharacter {
     private String name;
     public int experiencePoints;
     public int healthPoints;
-    private CharacterState currentState;
+    private Character currentState;
 
     public GameCharacter(String name) {
         this.name = name;
         this.experiencePoints = 0;
         this.healthPoints = 100;
-        setState(new NoviceState(this));
+        setState(new Novice(this));
     }
-    public void setState(CharacterState state) {
+    public void setState(Character state) {
         this.currentState = state;
     }
     public void train() {

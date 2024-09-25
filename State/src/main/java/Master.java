@@ -1,7 +1,7 @@
-public class MasterState implements CharacterState {
+public class Master implements Character {
     private GameCharacter character;
 
-    public MasterState(GameCharacter character) {
+    public Master(GameCharacter character) {
         this.character = character;
     }
     @Override

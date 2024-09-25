@@ -1,7 +1,7 @@
-public class IntermediateState implements CharacterState {
+public class Intermediate implements Character {
     private GameCharacter character;
 
-    public IntermediateState(GameCharacter character) {
+    public Intermediate(GameCharacter character) {
         this.character = character;
     }
     @Override
@@ -19,7 +19,7 @@ public class IntermediateState implements CharacterState {
     @Override
     public void checkState() {
         if (character.experiencePoints >= 60) {
-            character.setState(new ExpertState(character));
+            character.setState(new Expert(character));
         }
     }
 }

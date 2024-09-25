@@ -1,7 +1,7 @@
-public class ExpertState implements CharacterState {
+public class Expert implements Character {
     private GameCharacter character;
 
-    public ExpertState(GameCharacter character) {
+    public Expert(GameCharacter character) {
         this.character = character;
     }
     @Override
@@ -20,7 +20,7 @@ public class ExpertState implements CharacterState {
     @Override
     public void checkState() {
         if (character.experiencePoints >= 100) {
-            character.setState(new MasterState(character));
+            character.setState(new Master(character));
         }
     }
 }
