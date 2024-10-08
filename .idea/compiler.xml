@@ -12,6 +12,7 @@
         <module name="State" />
         <module name="Observer" />
         <module name="Strategy" />
+        <module name="ChainOfResponsibility" />
         <module name="AbstractFactory" />
       </profile>
     </annotationProcessing>
