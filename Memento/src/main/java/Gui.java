@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -43,10 +44,14 @@ public class Gui extends Application {
 
 
         Label label = new Label("Press Ctrl-Z to undo the last change.");
+        Label label2 = new Label("Press Ctrl-Y to redo the last change.");
+        Button button = new Button("History");
         label.setPadding(insets);
+        label2.setPadding(insets);
+        button.setPadding(insets);
 
         // create a VBox that contains the HBox and the CheckBox
-        VBox vBox = new VBox(hBox, checkBox, label);
+        VBox vBox = new VBox(hBox, checkBox, label, label2, button);
         // call controller when the CheckBox is clicked
         checkBox.setOnAction(event -> {
             controller.setIsSelected(checkBox.isSelected());
@@ -65,6 +70,11 @@ public class Gui extends Application {
                 System.out.println("Redo key combination pressed");
                 controller.redo();
             }
+        });
+
+        button.setOnAction(event -> {
+            HistoryWindow historyWindow = new HistoryWindow(controller);
+            historyWindow.show();
         });
 
 

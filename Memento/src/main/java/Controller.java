@@ -38,6 +38,7 @@ public class Controller {
     public void undo() {
         if (!history.isEmpty()) { // Check if there are states to undo
             IMemento currentState = model.createMemento(); // Save the current state
+            currentState.setOperationType("Undo");
             redoHistory.add(currentState); // Add the current state to redo history
             IMemento previousState = history.remove(history.size() - 1); // Get the last state from history
             model.restoreState(previousState); // Restore the previous state
@@ -48,6 +49,7 @@ public class Controller {
     public void redo() {
         if (!redoHistory.isEmpty()) { // Check if there are states to redo
             IMemento currentState = model.createMemento(); // Save the current state
+            currentState.setOperationType("Redo");
             history.add(currentState); // Add the current state to history
             IMemento nextState = redoHistory.remove(redoHistory.size() - 1); // Get the last state from redo history
             model.restoreState(nextState); // Restore the next state
@@ -57,6 +59,19 @@ public class Controller {
 
     private void saveToHistory() {
         IMemento currentState = model.createMemento();
+        currentState.setOperationType("Change");
         history.add(currentState);
+    }
+
+    public List<IMemento> getHistory() {
+        return history;
+    }
+
+    public void restoreFromHistory(int index) {
+        if (index >= 0 && index < history.size()) {
+            IMemento state = history.get(index);
+            model.restoreState(state);
+            gui.updateGui();
+        }
     }
 }

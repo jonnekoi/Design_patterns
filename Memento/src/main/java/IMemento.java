@@ -1,5 +1,5 @@
 public interface IMemento {
 
-    // memento metadata methods
-
+    void setOperationType(String operationType);
+    String getOperationType();
 }
